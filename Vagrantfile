@@ -59,6 +59,32 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # View the documentation for the provider you're using for more
   # information on available options.
 
+  config.vm.provision :shell, :inline => <<-LOCALE
+    echo ' #locale en_US.UTF-8'
+
+    echo 'LANG="en_US.UTF-8"'     >   /etc/default/locale
+    echo 'LANGUAGE="en_US.UTF-8"' >>  /etc/default/locale
+    echo 'LC_ALL="en_US.UTF-8"'   >>  /etc/default/locale
+
+    #apt-get update
+    #apt-get -y install build-essential curl wget vim lynx
+
+LOCALE
+
+  config.vm.provision :shell, :inline => <<-APTGETUPDATE
+    echo ' #apt get update'
+
+    apt-get -qq update
+
+APTGETUPDATE
+
+  config.vm.provision :shell, :inline => <<-APTGETINSTALL
+    echo ' #apt get install'
+
+    apt-get -qq -y install build-essential curl wget vim lynx
+
+APTGETINSTALL
+
   # Enable provisioning with Puppet stand alone.  Puppet manifests
   # are contained in a directory path relative to this Vagrantfile.
   # You will need to create the manifests directory and a manifest in
