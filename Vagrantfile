@@ -36,26 +36,23 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.synced_folder "../data", "/vagrant_data"
 
   config.vm.provision :shell, :inline => <<-LOCALE
-    echo ' #locale en_US.UTF-8'
+    echo ' # ↑↑↑ locale en_US.UTF-8'
 
     echo 'LANG="en_US.UTF-8"'     >   /etc/default/locale
     echo 'LANGUAGE="en_US.UTF-8"' >>  /etc/default/locale
     echo 'LC_ALL="en_US.UTF-8"'   >>  /etc/default/locale
 
-    #apt-get update
-    #apt-get -y install build-essential curl wget vim lynx
-
 LOCALE
 
   config.vm.provision :shell, :inline => <<-APTGETUPDATE
-    echo ' #apt get update'
+    echo ' # ↑↑↑ apt get update'
 
     apt-get -qq update
 
 APTGETUPDATE
 
   config.vm.provision :shell, :inline => <<-APTGETINSTALL
-    echo ' #apt get install'
+    echo ' # ↑↑↑ apt get install'
 
     apt-get -qq -y install build-essential curl wget vim lynx
 
