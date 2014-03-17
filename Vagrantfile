@@ -54,7 +54,7 @@ APTGETUPDATE
   config.vm.provision :shell, :inline => <<-APTGETINSTALL
     echo ' # ↑↑↑ apt get install'
 
-    apt-get -qq -y install build-essential curl wget vim lynx
+    apt-get -qq -y install build-essential curl wget git vim lynx
 
 APTGETINSTALL
 
